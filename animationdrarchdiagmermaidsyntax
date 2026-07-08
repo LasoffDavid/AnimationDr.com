@@ -1,0 +1,56 @@
+flowchart TD
+    subgraph "External Sources"
+        A[Website Forms / Organic Traffic] 
+        B[Lead Gen Team Input]
+        C[FMCG Brand Queries via Search/AI]
+    end
+
+    subgraph "freepaycalc.com Funding Engine"
+        F1[Utility Calculators + Content] 
+        F2[AdSense + PDF Store via Stripe/Razorpay] 
+        F3[Organic SEO/Content Agents] --> F2
+    end
+
+    subgraph "Ingestion & Qualification Layer"
+        D[Lead Intake n8n/Zapier] 
+        E[Qualification Agent Crew LangGraph/CrewAI]
+        Voice[AI Voice Agents WhatsApp/Twilio]
+        D --> E
+        A & B --> D
+    end
+
+    subgraph "CRM & Sales Layer"
+        G[HubSpot / Zoho / Kylas CRM]
+        H[Sales Agent Crew + Personalization]
+        E --> G
+        Voice --> H
+    end
+
+    subgraph "Core Delivery & Operations"
+        I[Project Management Notion/Airtable]
+        J[AI Video Pipeline HeyGen/Vyond/Runway + Custom Agents]
+        K[Ad Placement & Optimization Agent Google/Meta/Programmatic]
+        L[Client Portal & Feedback Loop]
+        G --> I
+        H --> I
+        I --> J
+        J --> K
+        K --> L
+    end
+
+    subgraph "Analytics & Orchestration"
+        M[Central Orchestrator LangGraph/n8n]
+        N[Dashboards Looker Studio + AI Insights]
+        O[Monitoring & Cost Control]
+        M <--> E & H & J & K
+        All --> N
+    end
+
+    subgraph "Output & Growth"
+        P[Organic Content Engine Blog/LinkedIn/YouTube]
+        Q[GEO & AI Visibility]
+        R[Scaling: More Agents + Compute]
+    end
+
+    F2 --> M
+    P & Q --> A & C
